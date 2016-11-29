@@ -2,7 +2,7 @@
 
 ![Captures d'écrans](screenshots.png)
 
-*Nantes Trams & Bus* est une application Windows Phone 8 qui permet de se déplacer plus facuilement sur le réseau [TAN](http://www.	tan.fr). 
+*Nantes Trams & Bus* est une application Windows Phone 8 qui permet de se déplacer plus facilement sur le réseau [TAN](http://www.	tan.fr). 
 L'application offre la possibilité de :
   - Visualiser les arrêts à proximité,
   - Connaître les prochains départs en temps réel à un arrêt,
