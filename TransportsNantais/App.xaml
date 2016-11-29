@@ -1,0 +1,116 @@
+﻿<Application
+    x:Class="TransportsNantais.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:c="clr-namespace:TransportsNantais.Converters"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+    <!--Application Resources-->
+    <Application.Resources>
+        <sys:String x:Key="ApplicationTitle">NANTES TRAM &amp; BUS</sys:String>
+        
+        <vm:ViewModelLocator xmlns:vm="clr-namespace:TransportsNantais" x:Key="Locator" />
+        <c:TanLigneToBitmapImageConverter x:Key="TanLigneToBitmapImageConverter" />
+        <c:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <c:HexaToSolidColorBrushConverter x:Key="HexaToSolidColorBrushConverter" />
+        <c:HexaToColorConverter x:Key="HexaToColorConverter" />
+
+        <local:LocalizedStrings xmlns:local="clr-namespace:TransportsNantais" x:Key="LocalizedStrings"/>
+        
+        <Canvas x:Key="Position" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="176,171,0,0">
+            <Ellipse Stroke="Black" StrokeThickness="4" Width="30" Height="30"/>
+            <Ellipse Height="14" StrokeThickness="4" Width="14" Fill="{StaticResource PhoneAccentBrush}" Margin="8,8,0,0"/>
+        </Canvas>
+
+        <Style x:Key="TurnstileFeatherTitlePanelStyle" TargetType="StackPanel">
+            <Setter Property="toolkit:TurnstileFeatherEffect.FeatheringIndex" Value="0"/>
+        </Style>
+
+        <Style x:Key="PageStyleBase" TargetType="phone:PhoneApplicationPage">
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="shell:SystemTray.BackgroundColor" Value="{StaticResource PhoneBackgroundColor}"/>
+        </Style>
+
+        <Style x:Key="PageStyle" TargetType="phone:PhoneApplicationPage" BasedOn="{StaticResource PageStyleBase}">
+            <Setter Property="toolkit:TransitionService.NavigationInTransition">
+                <Setter.Value>
+                    <toolkit:NavigationInTransition>
+                        <toolkit:NavigationInTransition.Backward>
+                            <toolkit:TurnstileTransition Mode="BackwardIn"/>
+                        </toolkit:NavigationInTransition.Backward>
+                        <toolkit:NavigationInTransition.Forward>
+                            <toolkit:TurnstileTransition Mode="ForwardIn"/>
+                        </toolkit:NavigationInTransition.Forward>
+                    </toolkit:NavigationInTransition>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="toolkit:TransitionService.NavigationOutTransition">
+                <Setter.Value>
+                    <toolkit:NavigationOutTransition>
+                        <toolkit:NavigationOutTransition.Backward>
+                            <toolkit:TurnstileTransition Mode="BackwardOut"/>
+                        </toolkit:NavigationOutTransition.Backward>
+                        <toolkit:NavigationOutTransition.Forward>
+                            <toolkit:TurnstileTransition Mode="ForwardOut"/>
+                        </toolkit:NavigationOutTransition.Forward>
+                    </toolkit:NavigationOutTransition>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TurnstileFeatherPageStyle" TargetType="phone:PhoneApplicationPage" BasedOn="{StaticResource PageStyleBase}">
+            <Setter Property="toolkit:TransitionService.NavigationInTransition">
+                <Setter.Value>
+                    <toolkit:NavigationInTransition>
+                        <toolkit:NavigationInTransition.Backward>
+                            <toolkit:TurnstileFeatherTransition Mode="BackwardIn" BeginTime="0:0:0.1"/>
+                        </toolkit:NavigationInTransition.Backward>
+                        <toolkit:NavigationInTransition.Forward>
+                            <toolkit:TurnstileFeatherTransition Mode="ForwardIn" BeginTime="0:0:0.1"/>
+                        </toolkit:NavigationInTransition.Forward>
+                    </toolkit:NavigationInTransition>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="toolkit:TransitionService.NavigationOutTransition">
+                <Setter.Value>
+                    <toolkit:NavigationOutTransition>
+                        <toolkit:NavigationOutTransition.Backward>
+                            <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+                        </toolkit:NavigationOutTransition.Backward>
+                        <toolkit:NavigationOutTransition.Forward>
+                            <toolkit:TurnstileFeatherTransition Mode="ForwardOut"/>
+                        </toolkit:NavigationOutTransition.Forward>
+                    </toolkit:NavigationOutTransition>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PageUIBase" TargetType="toolkit:PageUI">
+            <Setter Property="Title" Value="{StaticResource ApplicationTitle}"/>
+        </Style>
+
+        <Style TargetType="toolkit:PageUI" BasedOn="{StaticResource PageUIBase}">
+            <Setter Property="Title" Value="{StaticResource ApplicationTitle}"/>
+        </Style>
+
+        <Style x:Key="TurnstileFeatherPageUIStyle" TargetType="toolkit:PageUI" BasedOn="{StaticResource PageUIBase}">
+            <Setter Property="TitlePanelStyle" Value="{StaticResource TurnstileFeatherTitlePanelStyle}"/>
+        </Style>
+        
+        
+
+    </Application.Resources>
+
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService
+            Launching="Application_Launching" Closing="Application_Closing"
+            Activated="Application_Activated" Deactivated="Application_Deactivated"/>
+    </Application.ApplicationLifetimeObjects>
+
+</Application>

@@ -1,0 +1,16 @@
+﻿Version 0.0.0.2 :
+    - Correction d'un problème avec le bouton 
+	  "directions" des détails d'une ligne.
+	- Correction d'un problème lors de 
+	  l'épinglage d'un arrêt.
+	- Le rafraichissement de la position
+	  géographique est automatique.
+	- Avertissement concernant les données
+	  des lignes.
+	- Historique des versions dans "a propos".
+
+Version 0.0.0.1 :
+    - Rechercher un arrêt.
+    - Voir ceux qui se trouvent proche de vous.
+    - Connaître les prochains départs.
+    - Consulter le trajet des lignes (beta).

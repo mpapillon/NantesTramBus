@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="TransportsNantais.Views.Partials.DeparturesList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:mvvm="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    DataContext="{Binding Source={StaticResource Locator}, Path=StopDetails}"
+    d:DesignHeight="600" d:DesignWidth="480">
+
+    <Grid Background="{StaticResource PhoneBackgroundBrush}">
+        <TextBlock Text="{Binding Message}" 
+                   Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}, Path=IsBusy}" 
+                   Style="{StaticResource EmptyListHeaderStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                   Margin="12,12,12,0"  toolkit:TurnstileFeatherEffect.FeatheringIndex="2"/>
+        <ListBox x:Name="NextDepartures" ItemsSource="{Binding NextDepartures}" 
+                 toolkit:TurnstileFeatherEffect.FeatheringIndex="2" toolkit:TiltEffect.SuppressTilt="True">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="12,0,0,25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Height="78" Source="{Binding Ligne.NumLigne, Converter={StaticResource TanLigneToBitmapImageConverter}}" />
+                        <StackPanel Grid.Column="1">
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="à" Margin="12,0,0,0" FontFamily="Wingdings" FontSize="25" VerticalAlignment="Center" Style="{StaticResource PhoneTextLargeStyle}" />
+                                <TextBlock Text="{Binding Terminus}" Style="{StaticResource PhoneTextLargeStyle}" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <TextBlock Text="{Binding Temps}" Style="{StaticResource PhoneTextSubtleStyle}" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

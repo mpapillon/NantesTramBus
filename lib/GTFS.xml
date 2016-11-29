@@ -1,0 +1,3179 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GTFS</name>
+    </assembly>
+    <members>
+        <member name="T:GTFS.Attributes.FileNameAttribute">
+            <summary>
+            Represents an attribute that contains the filename in the GTFS-specification.
+            </summary>
+        </member>
+        <member name="M:GTFS.Attributes.FileNameAttribute.#ctor(System.String)">
+            <summary>
+            Creates a new FileNameAttribute with a given file name.
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="P:GTFS.Attributes.FileNameAttribute.FileName">
+            <summary>
+            Gets the filename.
+            </summary>
+        </member>
+        <member name="T:GTFS.DB.IGTFSFeedDB">
+            <summary>
+            An abstract representation of a GTFS feed db.
+            </summary>
+        </member>
+        <member name="M:GTFS.DB.IGTFSFeedDB.AddFeed">
+            <summary>
+            Adds a new feed to this db.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.DB.IGTFSFeedDB.AddFeed(GTFS.IGTFSFeed)">
+            <summary>
+            Adds an existing GTFS feed to this db.
+            </summary>
+            <param name="feed">The feed to add.</param>
+            <returns>The id of the new feed.</returns>
+        </member>
+        <member name="M:GTFS.DB.IGTFSFeedDB.RemoveFeed(System.Int32)">
+            <summary>
+            Removes the feed with the given id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.DB.IGTFSFeedDB.GetFeeds">
+            <summary>
+            Returns all feeds.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.DB.IGTFSFeedDB.GetFeed(System.Int32)">
+            <summary>
+            Returns the feed with the given id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.DB.Memory.GTFSFeedDB">
+            <summary>
+            A naive in-memory implementation of a GTFS feed db.
+            </summary>
+        </member>
+        <member name="F:GTFS.DB.Memory.GTFSFeedDB._feeds">
+            <summary>
+            Holds all the feeds that have been added.
+            </summary>
+        </member>
+        <member name="M:GTFS.DB.Memory.GTFSFeedDB.AddFeed">
+            <summary>
+            Adds a new empty feed to this db.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.DB.Memory.GTFSFeedDB.AddFeed(GTFS.IGTFSFeed)">
+            <summary>
+            Adds a new feed.
+            </summary>
+            <param name="feed">The feed to add.</param>
+            <returns>The id of the new feed.</returns>
+        </member>
+        <member name="M:GTFS.DB.Memory.GTFSFeedDB.RemoveFeed(System.Int32)">
+            <summary>
+            Removes the feed with the given id.
+            </summary>
+            <param name="id">The id of the feed to remove.</param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.DB.Memory.GTFSFeedDB.GetFeeds">
+            <summary>
+            Returns all feeds.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.DB.Memory.GTFSFeedDB.GetFeed(System.Int32)">
+            <summary>
+            Returns the feed with the given id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.Entities.Enumerations.ExceptionType">
+            <summary>
+            Indicates whether service is available on the date specified in the date field.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.ExceptionType.Added">
+            <summary>
+            The service has been added for the specified date.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.ExceptionType.Removed">
+            <summary>
+            The service has been removed for the specified date.
+            </summary>
+        </member>
+        <member name="T:GTFS.Attributes.FieldNameAttribute">
+            <summary>
+            Represents an attribute that contains the fieldname in the GTFS-specification.
+            </summary>
+        </member>
+        <member name="M:GTFS.Attributes.FieldNameAttribute.#ctor(System.String)">
+            <summary>
+            Creates a new FieldNameAttribute with a given field name.
+            </summary>
+            <param name="fieldName"></param>
+        </member>
+        <member name="P:GTFS.Attributes.FieldNameAttribute.FieldName">
+            <summary>
+            Gets the fieldname.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Enumerations.PaymentMethodType">
+            <summary>
+            Indicates when the fare must be paid.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.PaymentMethodType.OnBoard">
+            <summary>
+            Fare is paid on board.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.PaymentMethodType.BeforeBoarding">
+            <summary>
+            Fare must be paid before boarding.
+            </summary>
+        </member>
+        <member name="T:GTFS.Attributes.RequiredAttribute">
+            <summary>
+            Represents an attribute that indicates requred properties in the GTFS-specification.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Agency">
+            <summary>
+            Represents a transit agency.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.GTFSEntity">
+            <summary>
+            Represents a base-class for all GTFS entities.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.GTFSEntity.Tag">
+            <summary>
+            Gets or sets a tag.
+            </summary>
+            <remarks>Can be used to attach extra information.</remarks>
+        </member>
+        <member name="M:GTFS.Entities.Agency.ToString">
+            <summary>
+            Returns a description of this trip.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:GTFS.Entities.Agency.Id">
+            <summary>
+            Gets or sets the ID that uniquely identifies a transit agency.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Agency.Name">
+            <summary>
+            Gets or sets the agency name, the full name of the transit agency.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Agency.URL">
+            <summary>
+            Gets or sets the URL of the transit agency. The value must be a fully qualified URL that includes http:// or https://, and any special characters in the URL must be correctly escaped.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Agency.Timezone">
+            <summary>
+            Gets or sets the timezone.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Agency.LanguageCode">
+            <summary>
+            Gets or set the two-letter ISO 639-1 code for the primary language used by this transit agency.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Agency.Phone">
+            <summary>
+            Gets or sets the voice telephone number for the specified agency
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Agency.FareURL">
+            <summary>
+            Gets or sets the URL of a web page that allows a rider to purchase tickets or other fare instruments for that agency online. The value must be a fully qualified URL that includes http:// or https://, and any special characters in the URL must be correctly escaped.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Calendar">
+            <summary>
+            Represents dates for service IDs using a weekly schedule. Specify when service starts and ends, as well as days of the week where service is available.
+            </summary>
+        </member>
+        <member name="M:GTFS.Entities.Calendar.CoversDate(System.DateTime)">
+            <summary>
+            Returns true if this calendar covers the given date.
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.Entities.Calendar.ToString">
+            <summary>
+            Returns a description of this trip.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.ServiceId">
+            <summary>
+            Gets or sets an ID that uniquely identifies a set of dates when service is available for one or more routes. Each service_id value can appear at most once in a calendar file. This value is dataset unique. It is referenced by the trips.txt file.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.Monday">
+            <summary>
+            Contains a binary value that indicates whether the service is valid for all Mondays.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.Tuesday">
+            <summary>
+            Contains a binary value that indicates whether the service is valid for all Tuesdays.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.Wednesday">
+            <summary>
+            Contains a binary value that indicates whether the service is valid for all Wednesdays.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.Thursday">
+            <summary>
+            Contains a binary value that indicates whether the service is valid for all Thursdays.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.Friday">
+            <summary>
+            Contains a binary value that indicates whether the service is valid for all Fridays.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.Saturday">
+            <summary>
+            Contains a binary value that indicates whether the service is valid for all Saturdays.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.Sunday">
+            <summary>
+            Contains a binary value that indicates whether the service is valid for all Sundays.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.StartDate">
+            <summary>
+            Gets or sets the start date for the service.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Calendar.EndDate">
+            <summary>
+            Gets or sets the end date for the service. This date is included in the service interval.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.CalendarDate">
+            <summary>
+            Represents exceptions for the service IDs defined in the calendar. If a CalendarDate exists for ALL dates of service, they may be use instead of Calendar.
+            </summary>
+        </member>
+        <member name="M:GTFS.Entities.CalendarDate.ToString">
+            <summary>
+            Returns a description of this trip.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:GTFS.Entities.CalendarDate.ServiceId">
+            <summary>
+            Gets or sets an ID that uniquely identifies a set of dates when a service exception is available for one or more routes. Each (service_id, date) pair can only appear once in calendar_dates.txt. If the a service_id value appears in both the calendar.txt and calendar_dates.txt files, the information in calendar_dates.txt modifies the service information specified in calendar.txt. This field is referenced by the trips.txt file.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.CalendarDate.Date">
+            <summary>
+            Gets or sets a particular date when service availability is different than the norm. You can use the exception_type field to indicate whether service is available on the specified date.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.CalendarDate.ExceptionType">
+            <summary>
+            Gets or sets the exception type that indicates whether service is available on the date specified in the date field.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Enumerations.DirectionType">
+            <summary>
+            Indicates the direction of travel for a trip.
+            </summary>
+            <remarks>
+            For example, you could use the trip_headsign and direction_id fields together to assign a name to travel in each direction for a set of trips. A trips.txt file could contain these rows for use in time tables:
+            
+            trip_id,...,trip_headsign,direction_id
+            1234,...,to Airport,0
+            1505,...,to Downtown,1
+            </remarks>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.DirectionType.OneDirection">
+            <summary>
+            Travel in one direction (e.g. outbound travel).
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.DirectionType.OppositeDirection">
+            <summary>
+            Travel in the opposite direction (e.g. inbound travel).
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Enumerations.DropOffType">
+            <summary>
+            Indicates whether passengers are dropped off at a stop as part of the normal schedule or whether a drop off at the stop is not available. This field also allows the transit agency to indicate that passengers must call the agency or notify the driver to arrange a drop off at a particular stop. Valid values for this field are:
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.DropOffType.Regular">
+            <summary>
+            Regularly scheduled drop off.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.DropOffType.NoPickup">
+            <summary>
+            No drop off available.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.DropOffType.PhoneForPickup">
+            <summary>
+            Must phone agency to arrange drop off.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.DropOffType.DriverForPickup">
+            <summary>
+            Must coordinate with driver to arrange drop off.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Enumerations.LocationType">
+            <summary>
+            The location type identifies whether a stop represents a stop or station.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.LocationType.Stop">
+            <summary>
+            A location where passengers board or disembark from a transit vehicle.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.LocationType.Station">
+            <summary>
+            A physical structure or area that contains one or more stop.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Enumerations.PickupType">
+            <summary>
+             Indicates whether passengers are picked up at a stop as part of the normal schedule or whether a pickup at the stop is not available.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.PickupType.Regular">
+            <summary>
+            Regularly scheduled pickup.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.PickupType.NoPickup">
+            <summary>
+            No pickup available.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.PickupType.PhoneForPickup">
+            <summary>
+            Must phone agency to arrange pickup.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.PickupType.DriverForPickup">
+            <summary>
+            Must coordinate with driver to arrange pickup.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Enumerations.RouteType">
+            <summary>
+            Describes the type of transportation used on a route.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.RouteType.Tram">
+            <summary>
+            Any light rail or street level system within a metropolitan area.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.RouteType.SubwayMetro">
+            <summary>
+            Any underground rail system within a metropolitan area.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.RouteType.Rail">
+            <summary>
+            Used for intercity or long-distance travel.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.RouteType.Bus">
+            <summary>
+            Used for short- and long-distance bus routes.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.RouteType.Ferry">
+            <summary>
+            Used for short- and long-distance boat service.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.RouteType.CableCar">
+            <summary>
+            Used for street-level cable cars where the cable runs beneath the car.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.RouteType.Gondola">
+            <summary>
+            Typically used for aerial cable cars where the car is suspended from the cable.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.RouteType.Funicular">
+            <summary>
+            Any rail system designed for steep inclines.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Enumerations.TransferType">
+            <summary>
+            The type of connection for the specified (from_stop_id, to_stop_id) pair.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.TransferType.Recommended">
+            <summary>
+            This is a recommended transfer point between two routes.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.TransferType.TimedTransfer">
+            <summary>
+            This is a timed transfer point between two routes. The departing vehicle is expected to wait for the arriving one, with sufficient time for a passenger to transfer between routes.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.TransferType.MinimumTime">
+            <summary>
+            This transfer requires a minimum amount of time between arrival and departure to ensure a connection. The time required to transfer is specified by min_transfer_time.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.TransferType.NotPossible">
+            <summary>
+            Transfers are not possible between routes at this location.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Enumerations.WheelchairAccessibilityType">
+            <summary>
+            Type of accessibility for wheelchair boardings are possible from the specified stop or station.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.WheelchairAccessibilityType.NoInformation">
+            <summary>
+            Indicates that there is no accessibility information
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.WheelchairAccessibilityType.SomeAccessibility">
+            <summary>
+            Indicates that at least some vehicles at this stop can be boarded by a rider in a wheelchair or there exists some accessible path from outside the station to the specific stop/platform.
+            </summary>
+        </member>
+        <member name="F:GTFS.Entities.Enumerations.WheelchairAccessibilityType.NoAccessibility">
+            <summary>
+            Wheelchair boarding is not possible at this stop or there exists no accessible path from outside the station to the specific stop/platform.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.FareAttribute">
+            <summary>
+            Represents fare information for a transit organization's routes.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareAttribute.FareId">
+            <summary>
+            Gets or sets an ID that uniquely identifies a fare class. The fareid is dataset unique.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareAttribute.Price">
+            <summary>
+            Gets or sets the fare price, in the unit specified by CurrencyType.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareAttribute.CurrencyType">
+            <summary>
+            Gets or sets the currency used to pay the fare. Uses the ISO 4217 alphabetical currency codes which can be found at the following URL: http://www.iso.org/iso/home/standards/iso4217.htm. 
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareAttribute.PaymentMethod">
+            <summary>
+            Gets or sets when the fare must be paid.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareAttribute.Transfers">
+            <summary>
+            Gets or sets the number of transfers permitted on this fare.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareAttribute.TransferDuration">
+            <summary>
+            Gets or sets the length of time in seconds before a transfer expires.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.FareRule">
+            <summary>
+            Represents rules for applying fare information for a transit organization's routes.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareRule.FareId">
+            <summary>
+            Gets or sets a fare.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareRule.RouteId">
+            <summary>
+            Gets or sets a route.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareRule.OriginId">
+            <summary>
+            Gets or sets the fare ID with an origin zone ID. Zone IDs are referenced from the stops.txt file. If you have several origin IDs with the same fare attributes, create a row in fare_rules.txt for each origin ID.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareRule.DestinationId">
+            <summary>
+            Gets or sets the fare ID with a destination zone ID. Zone IDs are referenced from the stops.txt file. If you have several destination IDs with the same fare attributes, create a row in fare_rules.txt for each destination ID.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FareRule.ContainsId">
+            <summary>
+            Gets or sets the fare ID with a zone ID, referenced from the stops.txt file. The fare ID is then associated with itineraries that pass through every contains_id zone.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.FeedInfo">
+            <summary>
+            Represents additional information about the GTFS feed itself, including publisher, version, and expiration information.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FeedInfo.PublisherName">
+            <summary>
+            Gets or sets the full name of the organization that publishes the feed. (This may be the same as one of the agency_name values in agency.txt.) GTFS-consuming applications can display this name when giving attribution for a particular feed's data.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FeedInfo.PublisherUrl">
+            <summary>
+            Gets or sets the URL of the feed publishing organization's website. (This may be the same as one of the agency_url values in agency.txt.) The value must be a fully qualified URL that includes http:// or https://, and any special characters in the URL must be correctly escaped. See http://www.w3.org/Addressing/URL/4_URI_Recommentations.html for a description of how to create fully qualified URL values.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FeedInfo.Lang">
+            <summary>
+            Gets or sets a IETF BCP 47 language code specifying the default language used for the text in this feed. This setting helps GTFS consumers choose capitalization rules and other language-specific settings for the feed. For an introduction to IETF BCP 47, please refer to http://www.rfc-editor.org/rfc/bcp/bcp47.txt and http://www.w3.org/International/articles/language-tags/.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FeedInfo.StartDate">
+            <summary>
+            Gets or sets the start date.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FeedInfo.EndDate">
+            <summary>
+            Gets or sets the end date.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.FeedInfo.Version">
+            <summary>
+            Gets or sets a string here that indicates the current version of their GTFS feed. GTFS-consuming applications can display this value to help feed publishers determine whether the latest version of their feed has been incorporated.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Frequency">
+            <summary>
+            Represents headway (time between trips) for routes with variable frequency of service.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Frequency.TripId">
+            <summary>
+            Gets or sets a trip.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Frequency.StartTime">
+            <summary>
+            Gets or sets the time at which service begins with the specified frequency. The time is measured from "noon minus 12h" (effectively midnight, except for days on which daylight savings time changes occur) at the beginning of the service date. For times occurring after midnight, enter the time as a value greater than 24:00:00 in HH:MM:SS local time for the day on which the trip schedule begins. E.g. 25:35:00.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Frequency.EndTime">
+            <summary>
+            Gets or sets the time at which service changes to a different frequency (or ceases) at the first stop in the trip. The time is measured from "noon minus 12h" (effectively midnight, except for days on which daylight savings time changes occur) at the beginning of the service date. For times occurring after midnight, enter the time as a value greater than 24:00:00 in HH:MM:SS local time for the day on which the trip schedule begins. E.g. 25:35:00.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Frequency.HeadwaySecs">
+            <summary>
+            Gets or sets the time between departures from the same stop (headway) for this trip type, during the time interval specified by start_time and end_time. The headway value must be entered in seconds.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Frequency.ExactTimes">
+            <summary>
+            Gets or sets a value that determines if frequency-based trips should be exactly scheduled based on the specified headway information. Valid values for this field are:
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Route">
+            <summary>
+            Represents a transit route. A route is a group of trips that are displayed to riders as a single service.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Route.Id">
+            <summary>
+            Gets or sets an ID that uniquely identifies a route. The route_id is dataset unique.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Route.AgencyId">
+            <summary>
+            Gets or sets an agency for the specified route. Use this field when you are providing data for routes from more than one agency.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Route.ShortName">
+            <summary>
+            Gets or sets the short name of a route. This will often be a short, abstract identifier like "32", "100X", or "Green" that riders use to identify a route, but which doesn't give any indication of what places the route serves. At least one of route_short_name or route_long_name must be specified, or potentially both if appropriate. If the route does not have a short name, please specify a route_long_name and use an empty string as the value for this field.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Route.LongName">
+            <summary>
+            Gets or sets the full name of a route. This name is generally more descriptive than the route_short_name and will often include the route's destination or stop. At least one of route_short_name or route_long_name must be specified, or potentially both if appropriate. If the route does not have a long name, please specify a route_short_name and use an empty string as the value for this field.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Route.Description">
+            <summary>
+            Gets or sets the description of a route. Please provide useful, quality information. Do not simply duplicate the name of the route. For example, "A trains operate between Inwood-207 St, Manhattan and Far Rockaway-Mott Avenue, Queens at all times. Also from about 6AM until about midnight, additional A trains operate between Inwood-207 St and Lefferts Boulevard (trains typically alternate between Lefferts Blvd and Far Rockaway)."
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Route.Type">
+            <summary>
+            Gets or sets the type of transportation used on this route.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Route.Url">
+            <summary>
+            Gets or sets the URL of a web page about that particular route. This should be different from the agency_url. The value must be a fully qualified URL that includes http:// or https://, and any special characters in the URL must be correctly escaped.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Route.Color">
+            <summary>
+            Gets or sets a color that corresponds to a route. The color must be provided as a six-character hexadecimal number, for example, 00FFFF. If no color is specified, the default route color is white (FFFFFF).
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Route.TextColor">
+            <summary>
+            Gets or sets a legible color to use for text drawn against a background of route_color. The color must be provided as a six-character hexadecimal number, for example, FFD700. If no color is specified, the default text color is black (000000).
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Shape">
+            <summary>
+            Represents rules for drawing lines on a map to represent a transit organization's routes.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Shape.Id">
+            <summary>
+            Gets or sets an ID that uniquely identifies a shape.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Shape.Latitude">
+            <summary>
+            Gets or sets a shape point's latitude with a shape ID. The field value must be a valid WGS 84 latitude. Each row in shapes.txt represents a shape point in your shape definition.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Shape.Longitude">
+            <summary>
+            Gets or sets a shape point's longitude with a shape ID. The field value must be a valid WGS 84 longitude value from -180 to 180. Each row in shapes.txt represents a shape point in your shape definition.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Shape.Sequence">
+            <summary>
+            Gets or sets the sequence order along the shape. The values for shape_pt_sequence must be non-negative integers, and they must increase along the trip. 
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Shape.DistanceTravelled">
+            <summary>
+            Gets or sets the distance traveled along a shape from the first shape point.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Stop">
+            <summary>
+            Represents an individual location where vehicles pick up or drop off passengers.
+            </summary>
+        </member>
+        <member name="M:GTFS.Entities.Stop.ToString">
+            <summary>
+            Returns a description of this trip.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:GTFS.Entities.Stop.Id">
+            <summary>
+            Gets or sets an ID that uniquely identifies a stop or station. Multiple routes may use the same stop. The stop_id is dataset unique.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.Code">
+            <summary>
+            Gets or sets short text or a number that uniquely identifies the stop for passengers. Stop codes are often used in phone-based transit information systems or printed on stop signage to make it easier for riders to get a stop schedule or real-time arrival information for a particular stop.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.Name">
+            <summary>
+            Gets or sets the name of a stop or station. Please use a name that people will understand in the local and tourist vernacular.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.Description">
+            <summary>
+            Gets or sets the description of a stop. Please provide useful, quality information. Do not simply duplicate the name of the stop.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.Latitude">
+            <summary>
+            Gets or sets the latitude of a stop or station. The field value must be a valid WGS 84 latitude.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.Longitude">
+            <summary>
+            Gets or sets the longitude of a stop or station. The field value must be a valid WGS 84 longitude value from -180 to 180.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.Zone">
+            <summary>
+            Gets or sets the fare zone for a stop. Zone IDs are required if you want to provide fare information using fare rules. If this stop ID represents a station, the zone ID is ignored.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.Url">
+            <summary>
+            Gets or set the URL of a web page about a particular stop. This should be different from the agency_url and the route_url fields. The value must be a fully qualified URL that includes http:// or https://, and any special characters in the URL must be correctly escaped.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.LocationType">
+            <summary>
+            Gets or sets the location field that identifies whether this stop represents a stop or station. If no location type is specified, or the location type is blank, stops are treated as regular stops. Stations may have different properties from stops when they are represented on a map or used in trip planning.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.ParentStation">
+            <summary>
+            Gets or sets the station associated with the stop. To use this field, a stop must also exist where this stop ID is assigned LocationType=Station.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.Timezone">
+            <summary>
+            Gets or sets the timezone in which this stop or station is located. Please refer to Wikipedia List of Timezones for a list of valid values. If omitted, the stop should be assumed to be located in the timezone specified by agency_timezone in agency.txt.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Stop.WheelchairBoarding">
+            <summary>
+            Gets or sets whether wheelchair boardings are possible from the specified stop or station. The field can have the following values:
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.StopTime">
+            <summary>
+            Represents a stop time. Times that a vehicle arrives at and departs from individual stops for each trip.
+            </summary>
+        </member>
+        <member name="M:GTFS.Entities.StopTime.ToString">
+            <summary>
+            Returns a description of this trip.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.Entities.StopTime.CompareTo(System.Object)">
+            <summary>
+            Compares this StopTime to the given object.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="P:GTFS.Entities.StopTime.TripId">
+            <summary>
+            Gets or sets a trip.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.StopTime.ArrivalTime">
+            <summary>
+            Gets or sets the arrival time at a specific stop for a specific trip on a route. The time is measured from "noon minus 12h" (effectively midnight, except for days on which daylight savings time changes occur) at the beginning of the service date. For times occurring after midnight on the service date, enter the time as a value greater than 24:00:00 in HH:MM:SS local time for the day on which the trip schedule begins. If you don't have separate times for arrival and departure at a stop, enter the same value for arrival_time and departure_time.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.StopTime.DepartureTime">
+            <summary>
+            Gets or sets the departure time from a specific stop for a specific trip on a route. The time is measured from "noon minus 12h" (effectively midnight, except for days on which daylight savings time changes occur) at the beginning of the service date. For times occurring after midnight on the service date, enter the time as a value greater than 24:00:00 in HH:MM:SS local time for the day on which the trip schedule begins. If you don't have separate times for arrival and departure at a stop, enter the same value for arrival_time and departure_time.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.StopTime.StopId">
+            <summary>
+            Gets or sets a stop. Multiple routes may use the same stop. If location_type is used in stops.txt, all stops referenced in stop_times.txt must have location_type of 0.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.StopTime.StopSequence">
+            <summary>
+            Gets or sets the order of the stop for a particular trip. The values for stop_sequence must be non-negative integers, and they must increase along the trip.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.StopTime.StopHeadsign">
+            <summary>
+            Gets or sets the text that appears on a sign that identifies the trip's destination to passengers. Use this field to override the default trip_headsign when the headsign changes between stops. If this headsign is associated with an entire trip, use trip_headsign instead.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.StopTime.PickupType">
+            <summary>
+            Gets or sets the pickup type field that indicates whether passengers are picked up at a stop as part of the normal schedule or whether a pickup at the stop is not available. This field also allows the transit agency to indicate that passengers must call the agency or notify the driver to arrange a pickup at a particular stop.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.StopTime.DropOffType">
+            <summary>
+            Gets or sets the drop off type field that indicates whether passengers are dropped off at a stop as part of the normal schedule or whether a drop off at the stop is not available. This field also allows the transit agency to indicate that passengers must call the agency or notify the driver to arrange a drop off at a particular stop. 
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.StopTime.ShapeDistTravelled">
+            <summary>
+            Gets or sets a distance from the first shape point.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.TimeOfDay">
+            <summary>
+            A stop time of day.
+            </summary>
+        </member>
+        <member name="M:GTFS.Entities.TimeOfDay.FromTotalSeconds(System.Int32)">
+            <summary>
+            Creates a new time of day from total seconds.
+            </summary>
+            <param name="totalSeconds"></param>
+            <returns></returns>
+        </member>
+        <member name="P:GTFS.Entities.TimeOfDay.Hours">
+            <summary>
+            Gets or sets the hours.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.TimeOfDay.Minutes">
+            <summary>
+            Gets or sets the minutes.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.TimeOfDay.Seconds">
+            <summary>
+            Gets or sets the seconds.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.TimeOfDay.TotalSeconds">
+            <summary>
+            Gets the total seconds.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Transfer">
+            <summary>
+            Represents a rules for making connections at transfer points between routes.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Transfer.FromStop">
+            <summary>
+            Gets or sets a stop or station where a connection between routes begins.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Transfer.ToStop">
+            <summary>
+            Gets or sets a stop or station where a connection between routes ends.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Transfer.TransferType">
+            <summary>
+            Gets or sets the type of connection for the specified (from_stop_id, to_stop_id) pair.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Transfer.MinimumTransferTime">
+            <summary>
+            Gets or sets the amount of time that must be available in an itinerary to permit a transfer between routes at these stops.
+            </summary>
+        </member>
+        <member name="T:GTFS.Entities.Trip">
+            <summary>
+            Represents a trip. A trip is a sequence of two or more stops that occurs at specific time.
+            </summary>
+        </member>
+        <member name="M:GTFS.Entities.Trip.ToString">
+            <summary>
+            Returns a description of this trip.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:GTFS.Entities.Trip.Id">
+            <summary>
+            Gets or sets an ID that identifies a trip.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Trip.RouteId">
+            <summary>
+            Gets or sets a route.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Trip.ServiceId">
+            <summary>
+            Gets or sets an ID that uniquely identifies a set of dates when service is available for one or more routes. This value is referenced from the Calendar or CalendarDates entity.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Trip.Headsign">
+            <summary>
+            Gets or sets  the text that appears on a sign that identifies the trip's destination to passengers. Use this field to distinguish between different patterns of service in the same route. If the headsign changes during a trip, you can override the trip_headsign by specifying values for the the stop_headsign field in stop_times.txt.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Trip.ShortName">
+            <summary>
+            Gets or sets the text that appears in schedules and sign boards to identify the trip to passengers, for example, to identify train numbers for commuter rail trips. If riders do not commonly rely on trip names, please leave this field blank.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Trip.Direction">
+            <summary>
+            Gets or sets the direction of travel for a trip. Use this field to distinguish between bi-directional trips with the same route_id. This field is not used in routing; it provides a way to separate trips by direction when publishing time tables. You can specify names for each direction with the trip_headsign field.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Trip.BlockId">
+            <summary>
+            Gets or sets the block to which the trip belongs. A block consists of two or more sequential trips made using the same vehicle, where a passenger can transfer from one trip to the next just by staying in the vehicle. The block_id must be referenced by two or more trips in trips.txt.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Trip.ShapeId">
+            <summary>
+            Gets or sets a shape for the trip. This value is referenced from the shapes.txt file. The shapes.txt file allows you to define how a line should be drawn on the map to represent a trip.
+            </summary>
+        </member>
+        <member name="P:GTFS.Entities.Trip.AccessibilityType">
+            <summary>
+            Gets or sets accessibility information for the trip
+            </summary>
+        </member>
+        <member name="T:GTFS.Exceptions.GTFSIntegrityException">
+            <summary>
+            Exception thrown when a referred id has not been found.
+            </summary>
+        </member>
+        <member name="M:GTFS.Exceptions.GTFSIntegrityException.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a parsing exception.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:GTFS.Exceptions.GTFSIntegrityException.Name">
+            <summary>
+            Returns the name of the file.
+            </summary>
+        </member>
+        <member name="P:GTFS.Exceptions.GTFSIntegrityException.FieldName">
+            <summary>
+            Returns the field name of the file.
+            </summary>
+        </member>
+        <member name="P:GTFS.Exceptions.GTFSIntegrityException.Value">
+            <summary>
+            Returns the value that could not be parsed.
+            </summary>
+        </member>
+        <member name="T:GTFS.Exceptions.GTFSParseException">
+            <summary>
+            Exception thrown when a value could not be parsed.
+            </summary>
+        </member>
+        <member name="M:GTFS.Exceptions.GTFSParseException.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a parsing exception.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.Exceptions.GTFSParseException.#ctor(System.String,System.String,System.String,System.Exception)">
+            <summary>
+            Creates a parsing exception.
+            </summary>
+            <param name="innerException"></param>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:GTFS.Exceptions.GTFSParseException.Name">
+            <summary>
+            Returns the name of the file.
+            </summary>
+        </member>
+        <member name="P:GTFS.Exceptions.GTFSParseException.FieldName">
+            <summary>
+            Returns the field name of the file.
+            </summary>
+        </member>
+        <member name="P:GTFS.Exceptions.GTFSParseException.Value">
+            <summary>
+            Returns the value that could not be parsed.
+            </summary>
+        </member>
+        <member name="T:GTFS.Exceptions.GTFSRequiredFieldMissingException">
+            <summary>
+            Exception thrown when a required field is missing from a GTFS-feed.
+            </summary>
+        </member>
+        <member name="M:GTFS.Exceptions.GTFSRequiredFieldMissingException.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new field missing exception.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+        </member>
+        <member name="P:GTFS.Exceptions.GTFSRequiredFieldMissingException.Name">
+            <summary>
+            Returns the name of the file.
+            </summary>
+        </member>
+        <member name="P:GTFS.Exceptions.GTFSRequiredFieldMissingException.FieldName">
+            <summary>
+            Returns the field name of the file.
+            </summary>
+        </member>
+        <member name="T:GTFS.Exceptions.GTFSRequiredFileMissingException">
+            <summary>
+            Exception thrown when a required file was not found.
+            </summary>
+        </member>
+        <member name="M:GTFS.Exceptions.GTFSRequiredFileMissingException.#ctor(System.String)">
+            <summary>
+            Creates a parsing exception.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:GTFS.Exceptions.GTFSRequiredFileMissingException.Name">
+            <summary>
+            Returns the name of the file.
+            </summary>
+        </member>
+        <member name="T:GTFS.Extensions">
+            <summary>
+            Contains common extensions for this GTFS library.
+            </summary>
+        </member>
+        <member name="M:GTFS.Extensions.FastParse(System.String,System.Int32,System.Int32)">
+            <summary>
+            Parses an integer number from a string at the given index and with the given length.
+            </summary>
+            <param name="value"></param>
+            <param name="idx"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.Extensions.FastParse(System.Char)">
+            <summary>
+            Parses a number from a char value.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.Extensions.CopyTo(GTFS.IGTFSFeed,GTFS.IGTFSFeed)">
+            <summary>
+            Copies this feed to the given feed.
+            </summary>
+            <param name="thisFeed"></param>
+            <param name="feed"></param>
+        </member>
+        <member name="M:GTFS.Extensions.FromUnixTime(System.Int64)">
+            <summary>
+            Converts a number of milliseconds from 1/1/1970 into a standard DateTime.
+            </summary>
+            <param name="milliseconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.Extensions.ToUnixTime(System.DateTime)">
+            <summary>
+            Converts a standard DateTime into the number of milliseconds since 1/1/1970.
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.Fields.FieldMap">
+            <summary>
+            Represents a field map.
+            </summary>
+        </member>
+        <member name="F:GTFS.Fields.FieldMap._expectedToActual">
+            <summary>
+            Holds the expected-to-actual-conversion dictionary.
+            </summary>
+        </member>
+        <member name="F:GTFS.Fields.FieldMap._actualToExpected">
+            <summary>
+            Holds the actual-to-expected-conversion dictionary.
+            </summary>
+        </member>
+        <member name="M:GTFS.Fields.FieldMap.#ctor">
+            <summary>
+            Creates a new field map.
+            </summary>
+        </member>
+        <member name="M:GTFS.Fields.FieldMap.Clear">
+            <summary>
+            Clears all mapping.
+            </summary>
+        </member>
+        <member name="M:GTFS.Fields.FieldMap.Add(System.String,System.String)">
+            <summary>
+            Adds a new mapping between an expected field in the GFTS standard and the actual field in the feed.
+            </summary>
+            <param name="expected">The expected field in the GTFS standard.</param>
+            <param name="actual">The actual field in the feed.</param>
+        </member>
+        <member name="M:GTFS.Fields.FieldMap.GetActual(System.String)">
+            <summary>
+            Returns the actual field for the expected field according to this map.
+            </summary>
+            <param name="expected"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.Fields.FieldMap.GetExpected(System.String)">
+            <summary>
+            Returns the expected field for the actual field according to this map.
+            </summary>
+            <param name="actual"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.Filters.GTFSFeedFilter">
+            <summary>
+            Abstract representation of a GTFS feed filter.
+            </summary>
+        </member>
+        <member name="M:GTFS.Filters.GTFSFeedFilter.Filter(GTFS.IGTFSFeed)">
+            <summary>
+            Filters the given feed and returns the result.
+            </summary>
+            <param name="feed"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.Filters.GTFSFeedRoutesFilter">
+            <summary>
+            Represents a GTFS feed filter that leaves only data related to the given routes.
+            </summary>
+        </member>
+        <member name="F:GTFS.Filters.GTFSFeedRoutesFilter._routesFilter">
+            <summary>
+            Holds the routes filter function.
+            </summary>
+        </member>
+        <member name="M:GTFS.Filters.GTFSFeedRoutesFilter.#ctor(System.Func{GTFS.Entities.Route,System.Boolean})">
+            <summary>
+            Creates a new routes filter.
+            </summary>
+            <param name="routesFilter"></param>
+        </member>
+        <member name="M:GTFS.Filters.GTFSFeedRoutesFilter.#ctor(System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Creates a new routes filter.
+            </summary>
+            <param name="routeIds"></param>
+        </member>
+        <member name="M:GTFS.Filters.GTFSFeedRoutesFilter.Filter(GTFS.IGTFSFeed)">
+            <summary>
+            Filters the given feed and returns a filtered version.
+            </summary>
+            <param name="feed"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.Filters.GTFSFeedStopsFilter">
+            <summary>
+            Represents a GTFS feed filter that leaves only date related to the given stops.
+            </summary>
+        </member>
+        <member name="F:GTFS.Filters.GTFSFeedStopsFilter._stopFilter">
+            <summary>
+            Holds the stop filter function.
+            </summary>
+        </member>
+        <member name="M:GTFS.Filters.GTFSFeedStopsFilter.#ctor(System.Func{GTFS.Entities.Stop,System.Boolean})">
+            <summary>
+            Creates a new stops filter.
+            </summary>
+            <param name="stopFilter"></param>
+        </member>
+        <member name="M:GTFS.Filters.GTFSFeedStopsFilter.#ctor(System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Creates a new stops filter.
+            </summary>
+            <param name="stopIds"></param>
+        </member>
+        <member name="M:GTFS.Filters.GTFSFeedStopsFilter.Filter(GTFS.IGTFSFeed)">
+            <summary>
+            Filters the given feed and returns a filtered version.
+            </summary>
+            <param name="feed"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.GTFSFeed">
+            <summary>
+            Represents an entire GTFS feed as it exists on disk.
+            </summary>
+        </member>
+        <member name="T:GTFS.IGTFSFeed">
+            <summary>
+            Abstract representation of a GTFSFeed.
+            </summary>
+            <remarks>To be used as a proxy to load data into memory/a database/...</remarks>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddAgency(GTFS.Entities.Agency)">
+            <summary>
+            Adds an agency.
+            </summary>
+            <param name="agency"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetAgency(System.String)">
+            <summary>
+            Gets the agency with the given id.
+            </summary>
+            <param name="agencyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveAgency(System.String)">
+            <summary>
+            Removes the agency with the given id.
+            </summary>
+            <param name="agencyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetAgencies">
+            <summary>
+            Returns all agencies.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddCalendar(GTFS.Entities.Calendar)">
+            <summary>
+            Adds a new calendar.
+            </summary>
+            <param name="calendar"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetCalendars">
+            <summary>
+            Returns all calendars.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetCalendars(System.String)">
+            <summary>
+            Gets the calendars for the given service id.
+            </summary>
+            <param name="serviceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveCalendars(System.String)">
+            <summary>
+            Removes all calendars for the given service id.
+            </summary>
+            <param name="serviceId"></param>
+            <returns>The number of calendars removed.</returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddCalendarDate(GTFS.Entities.CalendarDate)">
+            <summary>
+            Adds a new calendar date.
+            </summary>
+            <param name="calendar"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetCalendarDates">
+            <summary>
+            Returns all calendar dates.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetCalendarDates(System.String)">
+            <summary>
+            Returns all calendar dates for the given service id.
+            </summary>
+            <returns></returns>
+            <param name="serviceId"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveCalendarDates(System.String)">
+            <summary>
+            Removes all calendar dates for the given service id.
+            </summary>
+            <param name="serviceId"></param>
+            <returns>The number of calendar dates removed.</returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddFareAttribute(GTFS.Entities.FareAttribute)">
+            <summary>
+            Adds a new fare attribute.
+            </summary>
+            <param name="fareAttribute"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetFareAttributes">
+            <summary>
+            Gets all fare attributes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetFareAttributes(System.String)">
+            <summary>
+            Gets all fare attributes for the given fare id.
+            </summary>
+            <param name="fareId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveFareAttributes(System.String)">
+            <summary>
+            Removes all fare attributes for the given fare id.
+            </summary>
+            <param name="fareId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddFareRule(GTFS.Entities.FareRule)">
+            <summary>
+            Adds a new fare rule.
+            </summary>
+            <param name="fareRule"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetFareRules">
+            <summary>
+            Gets all fare rules.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetFareRule(System.String)">
+             <summary>
+             Gets the fare rule for the given id.
+             </summary>
+            <param name="fareId"></param>
+             <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveFareRule(System.String)">
+             <summary>
+             Removes the fare rule for the given id.
+             </summary>
+            <param name="fareId"></param>
+             <returns>true if removed.</returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.SetFeedInfo(GTFS.Entities.FeedInfo)">
+            <summary>
+            Adds new feed info.
+            </summary>
+            <param name="feedInfo"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetFeedInfo">
+            <summary>
+            Gets the feed info.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddFrequency(GTFS.Entities.Frequency)">
+            <summary>
+            Adds a new frequency.
+            </summary>
+            <param name="frequency"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetFrequencies">
+            <summary>
+            Returns all frequencies.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetFrequencies(System.String)">
+            <summary>
+            Returns all frequencies for the given trip.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveFrequencies(System.String)">
+            <summary>
+            Removes all frequencies for the given trip.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddRoute(GTFS.Entities.Route)">
+            <summary>
+            Adds a new route.
+            </summary>
+            <param name="route"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetRoutes">
+            <summary>
+            Returns all routes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetRoute(System.String)">
+            <summary>
+            Returns the route for the given id.
+            </summary>
+            <param name="routeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveRoute(System.String)">
+            <summary>
+            Removes the route for the given id.
+            </summary>
+            <param name="routeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddShape(GTFS.Entities.Shape)">
+            <summary>
+            Adds a new shape.
+            </summary>
+            <param name="shape"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetShapes">
+            <summary>
+            Gets all shapes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetShapes(System.String)">
+            <summary>
+            Gets all shapes for the given trip id.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveShapes(System.String)">
+            <summary>
+            Removes all shapes for the given trip id.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddStop(GTFS.Entities.Stop)">
+            <summary>
+            Adds a new stop.
+            </summary>
+            <param name="stop"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetStops">
+            <summary>
+            Gets all stops.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetStop(System.String)">
+            <summary>
+            Gets the stop with the given id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveStop(System.String)">
+            <summary>
+            Removes the stop with the given id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddStopTime(GTFS.Entities.StopTime)">
+            <summary>
+            Adds a new stop time.
+            </summary>
+            <param name="stopTime"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetStopTimes">
+            <summary>
+            Gets all stop times.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetStopTimesForTrip(System.String)">
+            <summary>
+            Gets all stop times for the given trip.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveStopTimesForTrip(System.String)">
+            <summary>
+            Removes all stop times for the given trip.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetStopTimesForStop(System.String)">
+            <summary>
+            Gets all stop times for the given stop.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveStopTimesForStop(System.String)">
+            <summary>
+            Removes all stop times for the given stop.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddTransfer(GTFS.Entities.Transfer)">
+            <summary>
+            Adds a new transfer.
+            </summary>
+            <param name="transfer"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetTransfers">
+            <summary>
+            Gets all transfers.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetTransfersForFromStop(System.String)">
+            <summary>
+            Gets all transfers for the given from stop.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveTransfersForFromStop(System.String)">
+            <summary>
+            Removes all transfers for the given from stop.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetTransfersForToStop(System.String)">
+            <summary>
+            Gets all transfers for the given to stop.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveTransfersForToStop(System.String)">
+            <summary>
+            Removes all transfers for the given to stop.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.AddTrip(GTFS.Entities.Trip)">
+            <summary>
+            Adds a new trip.
+            </summary>
+            <param name="trip"></param>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetTrips">
+            <summary>
+            Gets all trips.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.GetTrip(System.String)">
+            <summary>
+            Returns the trip with the given id.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IGTFSFeed.RemoveTrip(System.String)">
+            <summary>
+            Removes the given trip.
+            </summary>
+            <param name="tripId"></param>
+        </member>
+        <member name="F:GTFS.GTFSFeed._agencies">
+            <summary>
+            Holds the agencies.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._calendars">
+            <summary>
+            Holds the calendars.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._calendarDates">
+            <summary>
+            Holds the calendar dates.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._fareAttributes">
+            <summary>
+            Holds the fare attributes.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._fareRules">
+            <summary>
+            Holds the fare rules.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._feedInfo">
+            <summary>
+            Holds the feed info.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._frequencies">
+            <summary>
+            Holds the frequencies.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._routes">
+            <summary>
+            Holds the routes.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._shapes">
+            <summary>
+            Holds the shapes.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._stops">
+            <summary>
+            Holds the stops.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._stopTimes">
+            <summary>
+            Holds the stop times.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._transfers">
+            <summary>
+            Holds the transfers.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSFeed._trips">
+            <summary>
+            Holds the trips.
+            </summary>
+        </member>
+        <member name="M:GTFS.GTFSFeed.#ctor">
+            <summary>
+            Creates a new feed.
+            </summary>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddAgency(GTFS.Entities.Agency)">
+            <summary>
+            Adds an agency.
+            </summary>
+            <param name="agency"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetAgency(System.String)">
+            <summary>
+            Gets the agency for the given id.
+            </summary>
+            <param name="agencyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveAgency(System.String)">
+            <summary>
+            Removes the agency with the given id.
+            </summary>
+            <param name="agencyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetAgencies">
+            <summary>
+            Gets all agencies.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddCalendar(GTFS.Entities.Calendar)">
+            <summary>
+            Adds a new calendar.
+            </summary>
+            <param name="calendar"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetCalendars">
+            <summary>
+            Returns all calendars.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetCalendars(System.String)">
+            <summary>
+            Returns all calendars for the given service id.
+            </summary>
+            <param name="serviceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveCalendars(System.String)">
+            <summary>
+            Removes all calenders for the given service id.
+            </summary>
+            <param name="serviceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddCalendarDate(GTFS.Entities.CalendarDate)">
+            <summary>
+            Adds a calendar date.
+            </summary>
+            <param name="calendar"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetCalendarDates">
+            <summary>
+            Returns all calendar dates.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetCalendarDates(System.String)">
+            <summary>
+            Returns all calendar dates for the given service id.
+            </summary>
+            <param name="serviceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveCalendarDates(System.String)">
+            <summary>
+            Removes all calendar dates for the given service id.
+            </summary>
+            <param name="serviceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddFareAttribute(GTFS.Entities.FareAttribute)">
+            <summary>
+            Adds a fare attribute.
+            </summary>
+            <param name="fareAttribute"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetFareAttributes">
+            <summary>
+            Returns all fare attributes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetFareAttributes(System.String)">
+            <summary>
+            Returns all fare attributes for the given fare id.
+            </summary>
+            <param name="fareId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveFareAttributes(System.String)">
+            <summary>
+            Removes all fare attributes for the given fare id.
+            </summary>
+            <param name="fareId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddFareRule(GTFS.Entities.FareRule)">
+            <summary>
+            Adds a fare rule.
+            </summary>
+            <param name="fareRule"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetFareRules">
+            <summary>
+            Gets all fare rules.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetFareRule(System.String)">
+            <summary>
+            Gets the fare rules for the given fare id.
+            </summary>
+            <param name="fareId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveFareRule(System.String)">
+            <summary>
+            Removes all fare rules for the given fare id.
+            </summary>
+            <param name="fareId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.SetFeedInfo(GTFS.Entities.FeedInfo)">
+            <summary>
+            Sets the feed info.
+            </summary>
+            <param name="feedInfo"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetFeedInfo">
+            <summary>
+            Gets the feed info.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddFrequency(GTFS.Entities.Frequency)">
+            <summary>
+            Adds a frequency.
+            </summary>
+            <param name="frequency"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetFrequencies">
+            <summary>
+            Returns all frequencies.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetFrequencies(System.String)">
+            <summary>
+            Returns the frequencies for the given trip id.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveFrequencies(System.String)">
+            <summary>
+            Removes all frequencies for the given trip id.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddRoute(GTFS.Entities.Route)">
+            <summary>
+            Adds a route.
+            </summary>
+            <param name="route"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetRoutes">
+            <summary>
+            Returns all routes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetRoute(System.String)">
+            <summary>
+            Returns the route.
+            </summary>
+            <param name="routeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveRoute(System.String)">
+            <summary>
+            Removes the route.
+            </summary>
+            <param name="routeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddShape(GTFS.Entities.Shape)">
+            <summary>
+            Adds a shape.
+            </summary>
+            <param name="shape"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetShapes">
+            <summary>
+            Returns all the shapes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetShapes(System.String)">
+            <summary>
+            Returns all the shapes for the given trip id.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveShapes(System.String)">
+            <summary>
+            Removes all the shapes for the given trip id.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddStop(GTFS.Entities.Stop)">
+            <summary>
+            Adds a stop.
+            </summary>
+            <param name="stop"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetStops">
+            <summary>
+            Returns all the stops.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetStop(System.String)">
+            <summary>
+            Gets the stop for the given id.
+            </summary>
+            <param name="stopId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveStop(System.String)">
+            <summary>
+            Removes the stop with the given id.
+            </summary>
+            <param name="stopId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddStopTime(GTFS.Entities.StopTime)">
+            <summary>
+            Adds a stop time.
+            </summary>
+            <param name="stopTime"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetStopTimes">
+            <summary>
+            Returns all stop times.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetStopTimesForTrip(System.String)">
+            <summary>
+            Returns the stop times for the given trip.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveStopTimesForTrip(System.String)">
+            <summary>
+            Removes the stop times for the given trip.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetStopTimesForStop(System.String)">
+            <summary>
+            Returns the stop times for the given stop.
+            </summary>
+            <param name="stopId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveStopTimesForStop(System.String)">
+            <summary>
+            Removes the stop times for the given stop.
+            </summary>
+            <param name="stopId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddTransfer(GTFS.Entities.Transfer)">
+            <summary>
+            Adds a transfer.
+            </summary>
+            <param name="transfer"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetTransfers">
+            <summary>
+            Returns all transfers.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetTransfersForFromStop(System.String)">
+            <summary>
+            Returns all transfers with the given stop as from stop.
+            </summary>
+            <param name="stopId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveTransfersForFromStop(System.String)">
+            <summary>
+            Removes all transfers with the given stop as from stop.
+            </summary>
+            <param name="stopId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetTransfersForToStop(System.String)">
+            <summary>
+            Returns all transfers with the given stop as to stop.
+            </summary>
+            <param name="stopId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveTransfersForToStop(System.String)">
+            <summary>
+            Removes all transfers with the given stop as to stop.
+            </summary>
+            <param name="stopId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.AddTrip(GTFS.Entities.Trip)">
+            <summary>
+            Adds a trip.
+            </summary>
+            <param name="trip"></param>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetTrips">
+            <summary>
+            Returns all the trips.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.GetTrip(System.String)">
+            <summary>
+            Returns the trip with the given id.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSFeed.RemoveTrip(System.String)">
+            <summary>
+            Removes the trip with the given id.
+            </summary>
+            <param name="tripId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.GTFSWriter`1">
+            <summary>
+            A GTFS writer.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(`0,System.Collections.Generic.IEnumerable{GTFS.IO.IGTFSTargetFile})">
+            <summary>
+            Writes the given feed to the given target files.
+            </summary>
+            <param name="feed"></param>
+            <param name="target"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.Agency})">
+            <summary>
+            Writes all agencies to the given agencies file.
+            </summary>
+            <param name="agenciesFile"></param>
+            <param name="agencies"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.CalendarDate})">
+            <summary>
+            Writes all calendar dates.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.Calendar})">
+            <summary>
+            Writes the calenders to the calenders file.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.FareAttribute})">
+            <summary>
+            Writes the fare attributes.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.FareRule})">
+            <summary>
+            Writes the fare rules.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,GTFS.Entities.FeedInfo)">
+            <summary>
+            Writes the feed info.
+            </summary>
+            <param name="file"></param>
+            <param name="entity"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.Frequency})">
+            <summary>
+            Writes the frequencies.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.Route})">
+            <summary>
+            Writes the routes.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.Shape})">
+            <summary>
+            Writes the shapes.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.Stop})">
+            <summary>
+            Writes the stops.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.StopTime})">
+            <summary>
+            Writes the stop times.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.Transfer})">
+            <summary>
+            Writes the transfers.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.Write(GTFS.IO.IGTFSTargetFile,System.Collections.Generic.IEnumerable{GTFS.Entities.Trip})">
+            <summary>
+            Writes the trips.
+            </summary>
+            <param name="file"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldString(System.String,System.String,System.String)">
+            <summary>
+            Writes a string-field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldExceptionType(System.String,System.String,GTFS.Entities.Enumerations.ExceptionType)">
+            <summary>
+            Writes the exception type.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldDate(System.String,System.String,System.DateTime)">
+            <summary>
+            Writes the date.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldBool(System.String,System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Writes the bool.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldUint(System.String,System.String,System.Nullable{System.UInt32})">
+            <summary>
+            Writes the uint.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldPaymentMethod(System.String,System.String,GTFS.Entities.Enumerations.PaymentMethodType)">
+            <summary>
+            Writes the payment method.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldColor(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Writes a color.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldRouteType(System.String,System.String,GTFS.Entities.Enumerations.RouteType)">
+            <summary>
+            Writes the route type.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldDouble(System.String,System.String,System.Nullable{System.Double})">
+            <summary>
+            Writes a double.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldLocationType(System.String,System.String,System.Nullable{GTFS.Entities.Enumerations.LocationType})">
+            <summary>
+            Writes the location type.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldDropOffType(System.String,System.String,System.Nullable{GTFS.Entities.Enumerations.DropOffType})">
+            <summary>
+            Writes the drop off type.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldPickupType(System.String,System.String,System.Nullable{GTFS.Entities.Enumerations.PickupType})">
+            <summary>
+            Writes the pickup type.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldTimeOfDay(System.String,System.String,GTFS.Entities.TimeOfDay)">
+            <summary>
+            Writes a timeofday.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldTransferType(System.String,System.String,GTFS.Entities.Enumerations.TransferType)">
+            <summary>
+            Writes a transfertime.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldAccessibilityType(System.String,System.String,System.Nullable{GTFS.Entities.Enumerations.WheelchairAccessibilityType})">
+            <summary>
+            Writes an accessibility type.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSWriter`1.WriteFieldDirectionType(System.String,System.String,System.Nullable{GTFS.Entities.Enumerations.DirectionType})">
+            <summary>
+            Writes a direction type.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.IO.CSV.CSVLineEnumerableReader">
+            <summary>
+            Wraps an IEnumerable containing line strings are a CSV reader.
+            </summary>
+        </member>
+        <member name="T:GTFS.IO.CSV.ICSVReader">
+            <summary>
+            Abstract representation of a CSV reader.
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.CSV.CSVLineEnumerableReader._lines">
+            <summary>
+            Holds the lines.
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.CSV.CSVLineEnumerableReader._seperator">
+            <summary>
+            Holds the serperator char.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVLineEnumerableReader.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new CSV stream.
+            </summary>
+            <param name="lines">The lines to read from.</param>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVLineEnumerableReader.#ctor(System.Collections.Generic.IEnumerable{System.String},System.Char)">
+            <summary>
+            Creates a new CSV stream.
+            </summary>
+            <param name="lines">The lines to read from.</param>
+            <param name="seperator">A custom seperator.</param>
+        </member>
+        <member name="F:GTFS.IO.CSV.CSVLineEnumerableReader._current">
+            <summary>
+            Holds the current line.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVLineEnumerableReader.Dispose">
+            <summary>
+            Disposes of all resources associated with this object.
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.CSV.CSVLineEnumerableReader._enumerator">
+            <summary>
+            Holds the enumerator.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVLineEnumerableReader.MoveNext">
+            <summary>
+            Move to the next line.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVLineEnumerableReader.Reset">
+            <summary>
+            Resets this enumerator.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.CSV.CSVLineEnumerableReader.Current">
+            <summary>
+            Returns the current line.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.CSV.CSVLineEnumerableReader.LinePreprocessor">
+            <summary>
+            Gets or sets the line preprocessor.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.CSV.CSVLineEnumerableReader.System#Collections#IEnumerator#Current">
+            <summary>
+            Returns the current line.
+            </summary>
+        </member>
+        <member name="T:GTFS.IO.CSV.CSVStreamReader">
+            <summary>
+            Holds a CSV stream reader.
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.CSV.CSVStreamReader._stream">
+            <summary>
+            Holds the stream reader.
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.CSV.CSVStreamReader._seperator">
+            <summary>
+            Holds the serperator char.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamReader.#ctor(System.IO.Stream)">
+            <summary>
+            Creates a new CSV stream.
+            </summary>
+            <param name="stream">The stream to read from.</param>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamReader.#ctor(System.IO.Stream,System.Char)">
+            <summary>
+            Creates a new CSV stream.
+            </summary>
+            <param name="stream">The stream to read from.</param>
+            <param name="seperator">A custom seperator.</param>
+        </member>
+        <member name="F:GTFS.IO.CSV.CSVStreamReader._current">
+            <summary>
+            Holds the current line.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamReader.Dispose">
+            <summary>
+            Disposes of all resources associated with this object.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamReader.MoveNext">
+            <summary>
+            Move to the next line.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamReader.Reset">
+            <summary>
+            Resets this enumerator.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.CSV.CSVStreamReader.Current">
+            <summary>
+            Returns the current line.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.CSV.CSVStreamReader.LinePreprocessor">
+            <summary>
+            Gets or sets the line preprocessor.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.CSV.CSVStreamReader.System#Collections#IEnumerator#Current">
+            <summary>
+            Returns the current line.
+            </summary>
+        </member>
+        <member name="T:GTFS.GTFSReader`1">
+            <summary>
+            A GTFS reader.
+            </summary>
+        </member>
+        <member name="F:GTFS.GTFSReader`1._strict">
+            <summary>
+            Flag making this reader very strict about the GTFS-spec.
+            </summary>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.#ctor">
+            <summary>
+            Creates a new GTFS reader.
+            </summary>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.#ctor(System.Boolean)">
+            <summary>
+            Creates a new GTFS reader.
+            </summary>
+            <param name="strict">Flag to set strict behaviour.</param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ReadDateTime(System.String,System.String,System.String)">
+            <summary>
+            Reads a datetime.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ReadTimeOfDay(System.String,System.String,System.String)">
+            <summary>
+            Reads a timeofday.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.Read(`0,System.Collections.Generic.IEnumerable{GTFS.IO.IGTFSSourceFile})">
+            <summary>
+            Reads the specified GTFS source into the given GTFS feed object.
+            </summary>
+            <param name="source"></param>
+            <param name="feed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ReadCustomFilesBefore">
+            <summary>
+            Reads custom files and returns a list of files that have already been read.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.Read(`0,System.Collections.Generic.IEnumerable{GTFS.IO.IGTFSSourceFile},GTFS.IO.IGTFSSourceFile)">
+            <summary>
+            Reads one file and it's dependencies from the specified GTFS source into the given GTFS feed object.
+            </summary>
+            <param name="feed"></param>
+            <param name="source"></param>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.GetRequiredFiles">
+            <summary>
+            Returns a list of all required files.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.GetDependencyTree">
+            <summary>
+            Returns the file dependency-tree.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.Read(GTFS.IO.IGTFSSourceFile,`0)">
+            <summary>
+            Reads the given file and adds the result to the feed.
+            </summary>
+            <param name="file"></param>
+            <param name="feed"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.Read``1(GTFS.IO.IGTFSSourceFile,`0,GTFS.GTFSReader{`0}.EntityParseDelegate{``0},GTFS.GTFSReader{`0}.EntityAddDelegate{``0})">
+            <summary>
+            Reads the agency file.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="file"></param>
+            <param name="feed"></param>
+            <param name="parser"></param>
+            <param name="addDelegate"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseAgency(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses an agency row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseAgencyField(GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.Agency,System.String,System.String)">
+            <summary>
+            Parses an agency field.
+            </summary>
+            <param name="header"></param>
+            <param name="agency"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseCalender(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a calendar row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseCalendarField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.Calendar,System.String,System.String)">
+            <summary>
+            Parses a route field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="calendar"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseCalendarDate(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a calendar date row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseCalendarDateField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.CalendarDate,System.String,System.String)">
+            <summary>
+            Parses a route field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="calendarDate"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFareAttribute(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a fare attribute row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFareAttributeField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.FareAttribute,System.String,System.String)">
+            <summary>
+            Parses a route field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="fareAttribute"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFareRule(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a fare rule row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFareRuleField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.FareRule,System.String,System.String)">
+            <summary>
+            Parses a route field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="fareRule"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFeedInfo(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a feed info row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFrequency(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a frequency row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFrequencyField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.Frequency,System.String,System.String)">
+            <summary>
+            Parses a route field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="frequency"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseRoute(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a route row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseRouteField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.Route,System.String,System.String)">
+            <summary>
+            Parses a route field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="route"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseShape(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a shape row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseShapeField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.Shape,System.String,System.String)">
+            <summary>
+            Parses a route field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="shape"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseStop(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a stop row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseStopField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.Stop,System.String,System.String)">
+            <summary>
+            Parses a stop field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="stop"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseStopTime(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a stop time row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseStopTimeField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.StopTime,System.String,System.String)">
+            <summary>
+            Parses a route field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="stopTime"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseTransfer(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a transfer row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseTrip(`0,GTFS.IO.GTFSSourceFileHeader,System.String[])">
+            <summary>
+            Parses a trip row.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseTripField(`0,GTFS.IO.GTFSSourceFileHeader,GTFS.Entities.Trip,System.String,System.String)">
+            <summary>
+            Parses a route field.
+            </summary>
+            <param name="feed"></param>
+            <param name="header"></param>
+            <param name="trip"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.CheckRequiredField(GTFS.IO.GTFSSourceFileHeader,System.String,GTFS.Fields.FieldMap,System.String)">
+            <summary>
+            Checks if a required field is actually in the header.
+            </summary>
+            <param name="header"></param>
+            <param name="name"></param>
+            <param name="fieldMap"></param>
+            <param name="column"></param>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldString(System.String,System.String,System.String)">
+            <summary>
+            Parses a string-field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldColor(System.String,System.String,System.String)">
+            <summary>
+            Parses a color field into an argb value.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldRouteType(System.String,System.String,System.String)">
+            <summary>
+            Parses a route-type field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldExceptionType(System.String,System.String,System.String)">
+            <summary>
+            Parses an exception-type field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldPaymentMethodType(System.String,System.String,System.String)">
+            <summary>
+            Parses a payment-method type field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldAccessibilityType(System.String,System.String,System.String)">
+            <summary>
+            Parses an accessibility-type field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldDropOffType(System.String,System.String,System.String)">
+            <summary>
+            Parses a drop-off-type field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldPickupType(System.String,System.String,System.String)">
+            <summary>
+            Parses a pickup-type field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldLocationType(System.String,System.String,System.String)">
+            <summary>
+            Parses a location-type field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldDirectionType(System.String,System.String,System.String)">
+            <summary>
+            Parses a direction-type field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldUInt(System.String,System.String,System.String)">
+            <summary>
+            Parses a positive integer field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldDouble(System.String,System.String,System.String)">
+            <summary>
+            Parses a double field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.ParseFieldBool(System.String,System.String,System.String)">
+            <summary>
+            Parses a boolean field.
+            </summary>
+            <param name="name"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReader`1.CleanFieldValue(System.String)">
+            <summary>
+            Cleans a field-value for parsing into a boolean, int, double or date.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.DateTimeReader">
+            <summary>
+            Gets or sets the date time reader.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.LinePreprocessor">
+            <summary>
+            Gets or sets the line preprocessor.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.DateTimeWriter">
+            <summary>
+            Gets or sets the date time writer.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.TimeOfDayReader">
+            <summary>
+            Gets or sets the time of day reader.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.TimeOfDayWriter">
+            <summary>
+            Gets or sets the time of day writer.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.AgencyMap">
+            <summary>
+            Gets the agency fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.CalendarMap">
+            <summary>
+            Gets the calendar fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.CalendarDateMap">
+            <summary>
+            Gets the calendar date fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.FareAttributeMap">
+            <summary>
+            Gets the fare attribute fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.FareRuleMap">
+            <summary>
+            Gets the fare rule fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.FeedInfoMap">
+            <summary>
+            Gets the feed info fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.FrequencyMap">
+            <summary>
+            Gets the frequence fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.RouteMap">
+            <summary>
+            Gets the route fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.ShapeMap">
+            <summary>
+            Gets the shape fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.StopMap">
+            <summary>
+            Gets the stop fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.StopTimeMap">
+            <summary>
+            Gets the stop time fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.TransferMap">
+            <summary>
+            Gets the transfer fieldmap.
+            </summary>
+        </member>
+        <member name="P:GTFS.GTFSReader`1.TripMap">
+            <summary>
+            Gets the trip fieldmap.
+            </summary>
+        </member>
+        <member name="T:GTFS.GTFSReader`1.EntityParseDelegate`1">
+            <summary>
+            A delegate for parsing methods per entity.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+        </member>
+        <member name="T:GTFS.GTFSReader`1.EntityAddDelegate`1">
+            <summary>
+            A delegate to add entities.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="entity"></param>
+        </member>
+        <member name="T:GTFS.GTFSReaderExtensions">
+            <summary>
+            Contains extension methods for the GTFS reader.
+            </summary>
+        </member>
+        <member name="M:GTFS.GTFSReaderExtensions.Read``1(GTFS.GTFSReader{``0},System.Collections.Generic.IEnumerable{GTFS.IO.IGTFSSourceFile})">
+            <summary>
+            Reads a GTFS feed from the given source.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="reader"></param>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReaderExtensions.Read``1(GTFS.GTFSReader{``0},System.Collections.Generic.IEnumerable{GTFS.IO.IGTFSSourceFile},GTFS.IO.IGTFSSourceFile)">
+            <summary>
+            Reads a GTFS feed from the given source.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="reader"></param>
+            <param name="source"></param>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.GTFSReaderExtensions.Read(GTFS.GTFSReader{GTFS.IGTFSFeed},GTFS.DB.IGTFSFeedDB,System.Collections.Generic.IEnumerable{GTFS.IO.IGTFSSourceFile})">
+            <summary>
+            Reads a GTFS feed directly into a GTFS feed db.
+            </summary>
+            <param name="reader"></param>
+            <param name="db"></param>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GTFS.IO.CSV.CSVStreamWriter">
+            <summary>
+            Holds a CSV stream reader.
+            </summary>
+        </member>
+        <member name="T:GTFS.IO.CSV.ICSVWriter">
+            <summary>
+            Abstract representation of a CSV writer.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.CSV.ICSVWriter.Write(System.String[])">
+            <summary>
+            Adds a new line.
+            </summary>
+            <param name="line"></param>
+        </member>
+        <member name="F:GTFS.IO.CSV.CSVStreamWriter._stream">
+            <summary>
+            Holds the stream reader.
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.CSV.CSVStreamWriter._seperator">
+            <summary>
+            Holds the serperator char.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Creates a new CSV stream.
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamWriter.#ctor(System.IO.Stream,System.Char)">
+            <summary>
+            Creates a new CSV stream.
+            </summary>
+            <param name="stream"></param>
+            <param name="seperator"></param>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamWriter.Write(System.String[])">
+            <summary>
+            Writes one line into the target csv-stream.
+            </summary>
+            <param name="line"></param>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamWriter.Flush">
+            <summary>
+            Flushes this writer.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.CSV.CSVStreamWriter.Dispose">
+            <summary>
+            Disposes of all resources associated with this object.
+            </summary>
+        </member>
+        <member name="T:GTFS.IO.GTFSSourceFileHeader">
+            <summary>
+            Defines a GTFS source file header.
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.GTFSSourceFileHeader._indexPerColumn">
+            <summary>
+            Holds the reverse index of the column names.
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.GTFSSourceFileHeader._columns">
+            <summary>
+            Holds the column names.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.GTFSSourceFileHeader.#ctor(System.String,System.String[])">
+            <summary>
+            Creates a new header.
+            </summary>
+            <param name="name"></param>
+            <param name="columns"></param>
+        </member>
+        <member name="M:GTFS.IO.GTFSSourceFileHeader.GetColumnIndex(System.String)">
+            <summary>
+            Returns the column index for given column.
+            </summary>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IO.GTFSSourceFileHeader.HasColumn(System.String)">
+            <summary>
+            Returns true if the column with the given name is in this header definition.
+            </summary>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IO.GTFSSourceFileHeader.GetColumn(System.Int32)">
+            <summary>
+            Returns the column for the given index.
+            </summary>
+            <param name="idx"></param>
+            <returns></returns>
+        </member>
+        <member name="P:GTFS.IO.GTFSSourceFileHeader.Name">
+            <summary>
+            Gets the name of the file this header represents.
+            </summary>
+        </member>
+        <member name="T:GTFS.IO.GTFSSourceFileLines">
+            <summary>
+            Represents a GTFS source file wrapping an enumerable of lines.
+            </summary>
+        </member>
+        <member name="T:GTFS.IO.IGTFSSourceFile">
+            <summary>
+            Represents a GTFS-file.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.IGTFSSourceFile.LinePreprocessor">
+            <summary>
+            Gets or sets the line preprocessor.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.IGTFSSourceFile.Name">
+            <summary>
+            Returns the name of the file (ex: agency, route, shape, ...).
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.GTFSSourceFileLines._lines">
+            <summary>
+            Holds the lines.
+            </summary>
+        </member>
+        <member name="F:GTFS.IO.GTFSSourceFileLines._customSeperator">
+            <summary>
+            Holds a custom seperator.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.GTFSSourceFileLines.#ctor(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Creates a new GTFS file stream.
+            </summary>
+            <param name="lines">The lines to read from.</param>
+            <param name="name">The name associated with this file stream.</param>
+        </member>
+        <member name="M:GTFS.IO.GTFSSourceFileLines.#ctor(System.Collections.Generic.IEnumerable{System.String},System.String,System.Char)">
+            <summary>
+            Creates a new GTFS file stream.
+            </summary>
+            <param name="lines">The lines to read from.</param>
+            <param name="name">The name associated with this file stream.</param>
+            <param name="seperator">A custom seperator.</param>
+        </member>
+        <member name="F:GTFS.IO.GTFSSourceFileLines._reader">
+            <summary>
+            Holds the current reader.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.GTFSSourceFileLines.GetEnumerator">
+            <summary>
+            Requests a new enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IO.GTFSSourceFileLines.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Requests a new enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.IO.GTFSSourceFileLines.Dispose">
+            <summary>
+            Disposes of all native resources associated with this source file.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.GTFSSourceFileLines.LinePreprocessor">
+            <summary>
+            Gets or sets the line preprocessor.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.GTFSSourceFileLines.Name">
+            <summary>
+            Gets the name of this file.
+            </summary>
+        </member>
+        <member name="T:GTFS.IO.IGTFSTargetFile">
+            <summary>
+            Abstract representation of a writeable GTFS file.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.IGTFSTargetFile.Clear">
+            <summary>
+            Clears all data in this file.
+            </summary>
+        </member>
+        <member name="M:GTFS.IO.IGTFSTargetFile.Write(System.String[])">
+            <summary>
+            Writes a line of data to this file.
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:GTFS.IO.IGTFSTargetFile.Close">
+            <summary>
+            Closes this file.
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.IGTFSTargetFile.Name">
+            <summary>
+            Returns the name of the file (ex: agency, route, shape, ...).
+            </summary>
+        </member>
+        <member name="P:GTFS.IO.IGTFSTargetFile.Exists">
+            <summary>
+            Returns true if the file already exists.
+            </summary>
+        </member>
+        <member name="T:GTFS.Validation.GTFSFeedValidation">
+            <summary>
+            Contains code to validate GTFS feed.
+            </summary>
+        </member>
+        <member name="M:GTFS.Validation.GTFSFeedValidation.Validate(GTFS.IGTFSFeed)">
+            <summary>
+            Validates a GTFS feed.
+            </summary>
+            <param name="feed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GTFS.Validation.GTFSFeedValidation.Validate(GTFS.IGTFSFeed,System.String@)">
+            <summary>
+            Validates a GTFS feed.
+            </summary>
+            <param name="feed"></param>
+            <param name="messages"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
